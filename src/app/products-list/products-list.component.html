@@ -1,3 +1,28 @@
-<p>
-  products-list works!
-</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Category</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.code}}</td>
+      <td>{{product.category}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td class="controls">
+        <button class="btn btn-info">Edit</button>
+        <button
+          class="btn btn-danger"
+          (click)="deleteProduct(product)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-success" (click)="createProduct()">Add new</button>
