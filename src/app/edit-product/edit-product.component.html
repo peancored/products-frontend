@@ -1,0 +1,97 @@
+<form #f="ngForm" (ngSubmit)="onSubmit($event)" class="form-horizontal" *ngIf="product">
+  <div class="form-group">
+    <label for="name" class="col-sm-1 control-label">Name</label>
+    <div class="col-sm-11">
+      <input
+        name="name"
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Name"
+        [(ngModel)]="product.name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="category" class="col-sm-1 control-label">Category</label>
+    <div class="col-sm-11">
+      <input
+        name="category"
+        type="text"
+        class="form-control"
+        id="category"
+        placeholder="Category"
+        [(ngModel)]="product.category">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-5 col-sm-offset-1">
+        <label for="code" class="col-sm-1 control-label">Code</label>
+        <div class="col-sm-11">
+          <input
+            name="code"
+            type="text"
+            class="form-control"
+            id="code"
+            placeholder="Code"
+            [(ngModel)]="product.code">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <label for="price" class="col-sm-1 control-label">Price</label>
+        <div class="col-sm-11">
+          <input
+            name="price"
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="Price"
+            [(ngModel)]="product.price">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-1 control-label">Add detail</label>
+    <div class="col-sm-10">
+      <div class="row">
+        <label class="col-sm-6">Key:</label>
+        <label class="col-sm-6">Value:</label>
+      </div>
+      <div class="row form-group" *ngFor="let detail of product.details; let i = index">
+        <div class="col-sm-6">
+          <input
+            name="key-{{i}}"
+            type="text"
+            class="form-control"
+            placeholder="Key"
+            [(ngModel)]="detail.key">
+        </div>
+        <div class="col-sm-5">
+          <input
+            name="value-{{i}}"
+            type="text"
+            class="form-control"
+            placeholder="Value"
+            [(ngModel)]="detail.value">
+        </div>
+        <div class="col-sm-1">
+          <button
+            *ngIf="i == product.details.length - 1"
+            class="btn btn-success"
+            (click)="addDetail(product)">
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+      <button type="submit" class="btn btn-default">Update</button>
+    </div>
+  </div>
+</form>

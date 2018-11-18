@@ -14,7 +14,11 @@
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td class="controls">
-        <button class="btn btn-info">Edit</button>
+        <button
+          class="btn btn-info"
+          (click)="editProduct(product)">
+          Edit
+        </button>
         <button
           class="btn btn-danger"
           (click)="deleteProduct(product)">

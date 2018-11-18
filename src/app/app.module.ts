@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { NewProductComponent } from './new-product/new-product.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 const appRoutes: Routes = [
   {
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   },
   { path: 'products', component: ProductsListComponent, pathMatch: 'full' },
   { path: 'new-product', component: NewProductComponent },
+  { path: 'edit-product/:productId', component: EditProductComponent },
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     ProductsListComponent,
     NewProductComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

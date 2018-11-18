@@ -20,11 +20,34 @@ export class ProductService {
     );
   }
 
-  delete(product: Product): Observable<Product> {
+  delete(product: Product): Observable<any> {
     return this.http.delete<Product>(`${API_URL}/products/${product.id}.json`);
   }
 
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${API_URL}/products.json`, { product });
+    return (
+      this.http.post<Product>(`${API_URL}/products.json`, { product })
+        .pipe(
+          map((data: any) => data.product)
+        )
+    );
+  }
+
+  update(product: Product): Observable<Product> {
+    return (
+      this.http.put<Product>(`${API_URL}/products/${product.id}.json`, { product })
+        .pipe(
+          map((data: any) => data.product)
+        )
+    );
+  }
+
+  get(productId: number): Observable<Product> {
+    return (
+      this.http.get<Product>(`${API_URL}/products/${productId}.json`)
+        .pipe(
+          map((data: any) => data.product)
+        )
+    );
   }
 }
